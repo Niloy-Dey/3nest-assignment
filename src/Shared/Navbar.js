@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import auth from '../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
-// import useUser from '../hooks/useUser';
 
 
 const Navbar = () => {
@@ -13,14 +12,12 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-
   const logout = () => {
     signOut(auth);
   }
 
   const [user] = useAuthState(auth);
 
-  // const [person] = useUser();
   console.log(user?.email)
 
   return (
@@ -71,7 +68,6 @@ const Navbar = () => {
 
         <ul className={`${isMenuOpen ? 'block' : 'hidden'} sm:items-center pt-10 md:pt-10 lg:pt-0  text-center mr-32 md:mr-80 text-xl leading-9 lg:flex  lg:space-x-6`} >
           <li><Link to="/home" className="text-white  hover:text-gray-200"> Home </Link></li>
-          {/* <li><Link to="/signIn" className="text-white hover:text-gray-200"> SignIn </Link></li> */}
 
           {
             user && <li> <Link to="/allEmployee" className="text-white hover:text-gray-200"> All Employee</Link></li>
@@ -80,9 +76,9 @@ const Navbar = () => {
             user && <li> <Link to="/dashboard" className="text-white hover:text-gray-200"> Dashboard</Link></li>
           }
 
+          {/* logout button here  */}
           <li className="text-white hover:text-gray-200">{user ? <Link onClick={logout} to="/">Sign Out</Link> : <Link to='/SignIn'>Sign In</Link>} </li>
 
-          {/* <li> <Link to="/signUp" className="text-white hover:text-gray-200"> SignUp</Link></li> */}
 
 
         </ul>

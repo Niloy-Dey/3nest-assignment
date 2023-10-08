@@ -12,8 +12,6 @@ const SignIn = () => {
     const [
         signInWithEmailAndPassword,
         user,
-        loading,
-        error,
     ] = useSignInWithEmailAndPassword(auth);
 
 
